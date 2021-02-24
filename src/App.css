@@ -1,3 +1,30 @@
+body {
+  background-color: #282c34;
+  color: #aaa;
+}
+
+input, button {
+  background-color: #282c34;
+  color: #61dafb;
+  margin-left: 4px;
+}
+
+label {
+  margin-left: 24px;
+}
+
+input.month {
+  width: 35px;
+}
+
+button {
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  background: none;
+  margin: 10px;
+}
+
 .App {
   text-align: center;
 }
@@ -12,6 +39,11 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
+input {
+  padding: 10px;
+}
+
 
 .App-header {
   background-color: #282c34;

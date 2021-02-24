@@ -1,7 +1,6 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-import Settings from "./components/Settings";
+import React from 'react';
+import './App.css';
+import Settings from './components/Settings';
 
 function App() {
   return (
