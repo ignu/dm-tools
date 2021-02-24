@@ -17,6 +17,16 @@ input.month {
   width: 35px;
 }
 
+.edit-button {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.delete-button {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
 button {
   padding: 0;
   cursor: pointer;

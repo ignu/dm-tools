@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Edit, X } from 'react-feather';
 import { Month, useStore } from '../store';
 
 const MonthInput = ({ month }: { month: Month }) => {
@@ -16,7 +17,7 @@ const MonthInput = ({ month }: { month: Month }) => {
         Days:
         <input className="month" type="number" value={month.days} />
       </label>
-      <button onClick={deleteMonth}>❌</button>
+      <X className="delete-button" onClick={deleteMonth} />
     </div>
   );
 };
@@ -30,13 +31,15 @@ const DayInput = ({ day }: { day: string }) => {
         Name:
         <input type="text" value={day} />
       </label>
-      <button onClick={deleteMonth}>❌</button>
+      <X className="delete-button" onClick={deleteMonth} />
     </div>
   );
 };
 
 const Settings = () => {
   const store = useStore((x) => x);
+  const [editDays, seteditDays] = useState(false);
+  const [editMonths, seteditMonths] = useState(false);
   const [state, setState] = useState({
     currentYear: store.currentYear,
   });
@@ -65,15 +68,18 @@ const Settings = () => {
         />
       </label>
 
-      <h2>Days</h2>
-      {store.dayNames.map((day) => (
-        <DayInput key={day} day={day} />
-      ))}
+      <h2>
+        {store.dayNames.length} Days a week
+        <Edit className="edit-button" onClick={() => seteditDays(true)} />
+      </h2>
 
-      <h2>Months</h2>
-      {store.months.map((month) => (
-        <MonthInput key={month.name} month={month} />
-      ))}
+      {editDays && store.dayNames.map((day) => <DayInput key={day} day={day} />)}
+
+      <h2>
+        {store.months.length} Months
+        <Edit className="edit-button" onClick={() => seteditMonths(true)} />
+      </h2>
+      {editMonths && store.months.map((month) => <MonthInput key={month.name} month={month} />)}
 
       <button onClick={updateStore}>Apply</button>
     </div>
