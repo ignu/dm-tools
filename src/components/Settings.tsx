@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Edit, X } from 'react-feather';
+import React, { useState } from 'react';
+import { Calendar, Edit, X } from 'react-feather';
 import { Month, useStore } from '../store';
 
 const MonthInput = ({ month }: { month: Month }) => {
@@ -40,23 +40,16 @@ const Settings = () => {
   const store = useStore((x) => x);
   const [editDays, seteditDays] = useState(false);
   const [editMonths, seteditMonths] = useState(false);
-  const [state, setState] = useState({
-    currentYear: store.currentYear,
-  });
 
   const updateYear = (event: React.ChangeEvent<HTMLInputElement>) => {
     const currentYear = parseInt(event.target.value);
-    setState({ currentYear });
-  };
-
-  const updateStore = () => {
-    store.setDetails(state);
+    store.setDetails({ currentYear });
   };
 
   return (
     <div>
       <h1>
-        Current Year: {store.currentYear} {store.yearSuffix}
+        Current Year: {store.currentYear} {store.yearSuffix} <Calendar />
       </h1>
       <label>
         Current Year
@@ -64,7 +57,7 @@ const Settings = () => {
           name="currentYear"
           type="number"
           onChange={updateYear}
-          value={state.currentYear.toString()}
+          value={store.currentYear.toString()}
         />
       </label>
 
@@ -80,8 +73,6 @@ const Settings = () => {
         <Edit className="edit-button" onClick={() => seteditMonths(true)} />
       </h2>
       {editMonths && store.months.map((month) => <MonthInput key={month.name} month={month} />)}
-
-      <button onClick={updateStore}>Apply</button>
     </div>
   );
 };

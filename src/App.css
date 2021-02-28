@@ -3,6 +3,11 @@ body {
   color: #aaa;
 }
 
+.calendar .month {
+  padding: 10px;
+  border: 1px solid #999;
+}
+
 input, button {
   background-color: #282c34;
   color: #61dafb;
