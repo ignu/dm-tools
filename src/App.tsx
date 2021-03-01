@@ -24,7 +24,7 @@ const DayWrapper = styled.div`
 const getDays = () => {
   let rv = [];
   for (let x = 0; x < 7; x++) {
-    rv.push(<DayWrapper>{x + 1}</DayWrapper>);
+    rv.push(<DayWrapper key={`day${x}`}>{x + 1}</DayWrapper>);
   }
   return rv;
 };
