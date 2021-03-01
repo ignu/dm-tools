@@ -1,5 +1,5 @@
 import { Month } from '../store';
-import { daysIn, monthsForYear } from './dateUtil';
+import { daysIn, getTime, monthsForYear } from './dateUtil';
 
 describe('daysIn', () => {
   it('can count the number of days', () => {
@@ -24,5 +24,13 @@ describe('monthsInYear', () => {
     expect(uniqueMonths.length).toEqual(2);
     expect(uniqueMonths[1].days).toEqual(29);
     expect(monthsForYear(months, 2021)[1].days).toEqual(28);
+  });
+});
+
+describe('getTime', () => {
+  it('returns time', () => {
+    expect(getTime(40)).toEqual('0:40');
+    expect(getTime(80)).toEqual('1:20');
+    expect(getTime(780)).toEqual('13:00');
   });
 });

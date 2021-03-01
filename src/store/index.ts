@@ -14,7 +14,7 @@ export type State = {
   currentYear: number;
   currentDay: number;
   currentDayOfWeekIndex: number;
-  currentSeconds: number;
+  currentMinutes: number;
   dayNames: Array<string>;
   months: Array<Month>;
   yearSuffix: string;
@@ -25,7 +25,7 @@ export type State = {
 export const useStore = create<State>((set, get) => ({
   ...eberron,
   currentDay: 10,
-  currentSeconds: 10,
+  currentMinutes: 10,
   increase: (by) => {
     console.log('🦄 - by', by);
   },
