@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Calendar, Edit, X } from 'react-feather';
 import { Month, useStore } from '../store';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const MonthInput = ({ month }: { month: Month }) => {
   const { months, setDetails } = useStore((x) => ({ months: x.months, setDetails: x.setDetails }));
@@ -37,6 +38,9 @@ const DayInput = ({ day }: { day: string }) => {
 };
 
 const Settings = () => {
+  useAuth0()
+    .buildAuthorizeUrl()
+    .then((x) => console.log('🦄 - url', x));
   const store = useStore((x) => x);
   const [editDays, seteditDays] = useState(false);
   const [editMonths, seteditMonths] = useState(false);
@@ -46,10 +50,11 @@ const Settings = () => {
     store.setDetails({ currentYear });
   };
 
+  console.log('🦄 - "SETTTTTTINGS"', 'SETTTTTTINGS');
   return (
     <div>
       <h1>
-        Current Year: {store.currentYear} {store.yearSuffix} <Calendar />
+        Cuuuurrent Year: {store.currentYear} {store.yearSuffix} <Calendar />
       </h1>
       <label>
         Current Year
