@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
+import './assets/main.css';
 import reportWebVitals from './reportWebVitals';
 
 const domain = process.env.REACT_APP_DOMAIN || '';

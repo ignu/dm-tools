@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Month, useStore } from '../store';
-import './App.css';
 
 const MonthWrapper = styled.div`
   border: 1px solid #998;
@@ -19,6 +18,7 @@ const DayWrapper = styled.div`
   align-content: center;
   justify-content: center;
 `;
+
 const getDays = () => {
   let rv = [];
   for (let x = 0; x < 7; x++) {

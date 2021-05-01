@@ -6,13 +6,24 @@ import LoginButton from './components/LoginButton';
 import Settings from './components/Settings';
 import Timer from './components/Timer';
 
-function App() {
-  const { isLoading } = useAuth0();
+const Header = () => {
+  const { isLoading, user } = useAuth0();
+  return (
+    <div className="h-9 flex flex-1">
+      <div style={{ border: '2px solid red' }} className="flex-1 flex-grow-1">
+        <h1>DM Tools</h1>
+      </div>
+      <div className="flex-2"></div>
+      <div className="flex-1">{!isLoading && <LoginButton />}</div>
+    </div>
+  );
+};
 
+function App() {
   return (
     <div className="App">
-      {!isLoading && <LoginButton />}
       <Router>
+        <Header />
         <Switch>
           <Route path="/settings">
             <Settings />

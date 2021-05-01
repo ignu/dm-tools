@@ -20,10 +20,10 @@ const DateDisplay = () => {
   const store = useStore((x) => x);
 
   return (
-    <DateDisplayWrapper>
+    <div>
       <h2>{`${store.currentYear} ${store.yearSuffix}`}</h2>
       <h2>{`${getTime(store.currentMinutes)}`}</h2>
-    </DateDisplayWrapper>
+    </div>
   );
 };
 
