@@ -34,3 +34,11 @@ describe('getTime', () => {
     expect(getTime(780)).toEqual('13:00');
   });
 });
+
+describe('getTime', () => {
+  it('returns time', () => {
+    expect(dayOfWeek(40)).toEqual('0:40');
+    expect(getTime(80)).toEqual('1:20');
+    expect(getTime(780)).toEqual('13:00');
+  });
+});

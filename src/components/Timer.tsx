@@ -3,19 +3,6 @@ import styled from 'styled-components';
 import { getTime } from '../lib/dateUtil';
 import { useStore } from '../store';
 
-const TimerWrapper = styled.div`
-  font-size: 2em;
-  input {
-    font-size: 1.1em;
-    width: 90px;
-  }
-`;
-const ButtonWrapper = styled.div``;
-const DateDisplayWrapper = styled.div`
-  border: 1px solid #999;
-  background-color: #001;
-`;
-
 const DateDisplay = () => {
   const store = useStore((x) => x);
 
@@ -56,16 +43,16 @@ const Timer = () => {
     <>
       <DateDisplay />
       <h2>{getTime(seconds)}</h2>
-      <TimerWrapper>
-        <ButtonWrapper>
+      <div>
+        <div>
           <label>
             <input value={timeInterval} onChange={updateTimeInterval} type="number" />
             minutes
             <button onClick={updateTime}>+ add</button>
           </label>
           <button>+1 hour</button>
-        </ButtonWrapper>
-      </TimerWrapper>
+        </div>
+      </div>
     </>
   );
 };
