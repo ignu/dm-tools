@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "dmtools60926df8": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}

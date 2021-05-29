@@ -1,20 +1,19 @@
-import { useAuth0 } from '@auth0/auth0-react';
+import { AmplifySignOut, withAuthenticator } from '@aws-amplify/ui-react';
+import Amplify from 'aws-amplify';
 import React from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import './App.css';
-import LoginButton from './components/LoginButton';
+import awsconfig from './aws-exports';
 import Settings from './components/Settings';
 import Timer from './components/Timer';
 
+Amplify.configure(awsconfig);
 const Header = () => {
-  const { isLoading, user } = useAuth0();
   return (
     <div className="h-9 flex flex-1">
       <div style={{ border: '2px solid red' }} className="flex-1 flex-grow-1">
         <h1>DM Tools</h1>
       </div>
-      <div className="flex-2"></div>
-      <div className="flex-1">{!isLoading && <LoginButton />}</div>
     </div>
   );
 };
@@ -24,6 +23,7 @@ function App() {
     <div className="App">
       <Router>
         <Header />
+        <AmplifySignOut />
         <Switch>
           <Route path="/settings">
             <Settings />
@@ -39,4 +39,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthenticator(App);
